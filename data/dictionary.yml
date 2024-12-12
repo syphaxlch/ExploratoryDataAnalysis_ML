@@ -1,0 +1,154 @@
+---
+
+data-schema:
+  - name: applicationId
+    type: string (nullable = true)
+    description: IANA IPFIX Information Element - Specifies an Application ID per [RFC6759].
+  - name: applicationName
+    type: string (nullable = true)
+    description: IANA IPFIX Information Element - Specifies the name of an application.
+  - name: bgpDestinationAsNumber
+    type: long (nullable = true)
+    description: IANA IPFIX Information Element - The autonomous system (AS) number of the destination IP address. If AS path information for this Flow is only available as an unordered AS set (and not as an ordered AS sequence), then the value of this Information Element is 0.
+  - name: bgpSourceAsNumber
+    type: long (nullable = true)
+    description: IANA IPFIX Information Element - The autonomous system (AS) number of the source IP address. If AS path information for this Flow is only available as an unordered AS set (and not as an ordered AS sequence), then the value of this Information Element is 0.
+  - name: biFlowEndMilliseconds
+    type: long (nullable = true)
+    description: Derived Biflow timestamp - the largest value (maximum) of `flowEndMilliseconds` and `flowEndMilliseconds_Rev` - The absolute timestamp of the last packet of this Biflow.
+  - name: biFlowStartMilliseconds
+    type: long (nullable = true)
+    description: Derived Biflow timestamp - the smallest value (minimum) of `flowStartMilliseconds` and `flowStartMilliseconds_Rev` -The absolute timestamp of the first packet of this Biflow.
+  - name: destinationIPv4Address
+    type: string (nullable = true)
+    description: IANA IPFIX Information Element - The IPv4 destination address in the IP packet header.
+  - name: destinationIPv6Address
+    type: string (nullable = true)
+    description: IANA IPFIX Information Element - The IPv6 destination address in the IP packet header.
+  - name: destinationTransportPort
+    type: integer (nullable = true)
+    description: IANA IPFIX Information Element - The destination port identifier in the transport header. For the transport protocols UDP, TCP, and SCTP, this is the destination port number given in the respective header. This field MAY also be used for future transport protocols that have 16-bit destination port identifiers.
+  - name: exercise_dst_ipv4_segment
+    type: string (nullable = true)
+    description: Cyber-exercise segment as per the `destinationIPv4Address` attribute.
+  - name: extendedFlow
+    type: struct (nullable = true)
+    description: RAW application-aware flow data.
+    fields:
+      - name: dhcp
+        type: string (nullable = true)
+        description: RAW data - parsed DHCP communication.
+      - name: dns
+        type: string (nullable = true)
+        description: RAW data - parsed DNS communication.
+      - name: http
+        type: string (nullable = true)
+        description: RAW data - parsed HTTP communication.
+      - name: mail
+        type: string (nullable = true)
+        description: RAW data - parsed e-mail communication.
+      - name: pgsql
+        type: string (nullable = true)
+        description: RAW data - parsed PostgreSQL communication.
+      - name: smtp
+        type: string (nullable = true)
+        description: RAW data - parsed SMTP communication.
+      - name: tcp
+        type: string (nullable = true)
+        description: RAW data - various TCP metrics.
+      - name: tls
+        type: string (nullable = true)
+        description: RAW data - parsed TLS communication.
+  - name: flowEndMilliseconds
+    type: long (nullable = true)
+    description: IANA IPFIX Information Element - The absolute timestamp of the last packet of this Flow.
+  - name: flowEndMilliseconds_Rev
+    type: long (nullable = true)
+    description: IANA IPFIX Information Element - The absolute timestamp of the last packet of this Flow. Reverse direction.
+  - name: flowStartMilliseconds
+    type: long (nullable = true)
+    description: IANA IPFIX Information Element - The absolute timestamp of the first packet of this Flow.
+  - name: flowStartMilliseconds_Rev
+    type: long (nullable = true)
+    description: IANA IPFIX Information Element - The absolute timestamp of the first packet of this Flow. Reverse direction.
+  - name: icmpTypeCodeIPv4
+    type: integer (nullable = true)
+    description: IANA IPFIX Information Element - Type and Code of the IPv4 ICMP message. The combination of both values is reported as (ICMP type * 256) + ICMP code.
+  - name: ingressInterface
+    type: long (nullable = true)
+    description: IANA IPFIX Information Element - The index of the IP interface where packets of this Flow are being received. The value matches the value of managed object 'ifIndex' as defined in [RFC2863]. Note that ifIndex values are not assigned statically to an interface and that the interfaces may be renumbered every time the device's management system is re-initialized, as specified in [RFC2863].
+  - name: ipClassOfService
+    type: integer (nullable = true)
+    description: IANA IPFIX Information Element - For IPv4 packets, this is the value of the TOS field in the IPv4 packet header. For IPv6 packets, this is the value of the Traffic Class field in the IPv6 packet header.
+  - name: ipVersion
+    type: integer (nullable = true)
+    description: IANA IPFIX Information Element - The IP version field in the IP packet header.
+  - name: mplsLabelStackSection2
+    type: string (nullable = true)
+    description: IANA IPFIX Information Element - The Label, Exp, and S fields from the label stack entry that was pushed immediately before the label stack entry that would be reported by mplsTopLabelStackSection. See the definition of mplsTopLabelStackSection for further details. The size of this Information Element is 3 octets.
+  - name: mplsLabelStackSection2_Rev
+    type: string (nullable = true)
+    description: IANA IPFIX Information Element - The Label, Exp, and S fields from the label stack entry that was pushed immediately before the label stack entry that would be reported by mplsTopLabelStackSection. See the definition of mplsTopLabelStackSection for further details. The size of this Information Element is 3 octets. Reverse direction.
+  - name: mplsLabelStackSection3
+    type: string (nullable = true)
+    description: IANA IPFIX Information Element - The Label, Exp, and S fields from the label stack entry that was pushed immediately before the label stack entry that would be reported by mplsLabelStackSection2. See the definition of mplsTopLabelStackSection for further details. The size of this Information Element is 3 octets.
+  - name: mplsLabelStackSection3_Rev
+    type: string (nullable = true)
+    description: IANA IPFIX Information Element - The Label, Exp, and S fields from the label stack entry that was pushed immediately before the label stack entry that would be reported by mplsLabelStackSection2. See the definition of mplsTopLabelStackSection for further details. The size of this Information Element is 3 octets. Reverse direction.
+  - name: mplsLabelStackSection4
+    type: string (nullable = true)
+    description: IANA IPFIX Information Element - The Label, Exp, and S fields from the label stack entry that was pushed immediately before the label stack entry that would be reported by mplsLabelStackSection3. See the definition of mplsTopLabelStackSection for further details. The size of this Information Element is 3 octets.
+  - name: mplsLabelStackSection4_Rev
+    type: string (nullable = true)
+    description: IANA IPFIX Information Element - The Label, Exp, and S fields from the label stack entry that was pushed immediately before the label stack entry that would be reported by mplsLabelStackSection3. See the definition of mplsTopLabelStackSection for further details. The size of this Information Element is 3 octets. Reverse direction.
+  - name: mplsTopLabelStackSection
+    type: string (nullable = true)
+    description: IANA IPFIX Information Element - The Label, Exp, and S fields from the top MPLS label stack entry, i.e., from the last label that was pushed. The size of this Information Element is 3 octets. Label - Label Value, 20 bits, Exp - Experimental Use, 3 bits, S - Bottom of Stack, 1 bit.
+  - name: mplsTopLabelStackSection_Rev
+    type: string (nullable = true)
+    description: IANA IPFIX Information Element - The Label, Exp, and S fields from the top MPLS label stack entry, i.e., from the last label that was pushed. The size of this Information Element is 3 octets. Label - Label Value, 20 bits, Exp - Experimental Use, 3 bits, S - Bottom of Stack, 1 bit. Reverse direction.
+  - name: octetDeltaCount
+    type: long (nullable = true)
+    description: IANA IPFIX Information Element - The number of octets since the previous report (if any) in incoming packets for this Flow at the Observation Point. The number of octets includes IP header(s) and IP payload.
+  - name: octetDeltaCount_Rev
+    type: long (nullable = true)
+    description: IANA IPFIX Information Element - The number of octets since the previous report (if any) in incoming packets for this Flow at the Observation Point. The number of octets includes IP header(s) and IP payload. Reverse direction.
+  - name: packetDeltaCount
+    type: long (nullable = true)
+    description: IANA IPFIX Information Element - The number of incoming packets since the previous report (if any) for this Flow at the Observation Point.
+  - name: packetDeltaCount_Rev
+    type: long (nullable = true)
+    description: IANA IPFIX Information Element - The number of incoming packets since the previous report (if any) for this Flow at the Observation Point. Reverse direction.
+  - name: protocolIdentifier
+    type: integer (nullable = true)
+    description: IANA IPFIX Information Element - The value of the protocol number in the IP packet header. The protocol number identifies the IP packet payload type. Protocol numbers are defined in the IANA Protocol Numbers registry. In Internet Protocol version 4 (IPv4), this is carried in the Protocol field. In Internet Protocol version 6 (IPv6), this is carried in the Next Header field in the last extension header of the packet.
+  - name: samplingAlgorithm
+    type: integer (nullable = true)
+    description: IANA IPFIX Information Element - The type of algorithm used for sampled NetFlow - 1 - Deterministic Sampling, 2 - Random Sampling.
+  - name: samplingInterval
+    type: long (nullable = true)
+    description: IANA IPFIX Information Element - When using sampled NetFlow, the rate at which packets are sampled -- e.g., a value of 100 indicates that one of every 100 packets is sampled.
+  - name: sourceIPv4Address
+    type: string (nullable = true)
+    description: IANA IPFIX Information Element - The IPv4 source address in the IP packet header.
+  - name: sourceIPv6Address
+    type: string (nullable = true)
+    description: IANA IPFIX Information Element - The IPv6 source address in the IP packet header.
+  - name: sourceTransportPort
+    type: integer (nullable = true)
+    description: IANA IPFIX Information Element - The source port identifier in the transport header. For the transport protocols UDP, TCP, and SCTP, this is the source port number given in the respective header. This field MAY also be used for future transport protocols that have 16-bit source port identifiers.
+  - name: tcpControlBits
+    type: integer (nullable = true)
+    description: IANA IPFIX Information Element - TCP control bits observed for the packets of this Flow. This information is encoded as a bit field; for each TCP control bit, there is a bit in this set. The bit is set to 1 if any observed packet of this Flow has the corresponding TCP control bit set to 1. The bit is cleared to 0 otherwise. See [RFC793][RFC3168] also.
+  - name: tcpControlBits_Rev
+    type: integer (nullable = true)
+    description: IANA IPFIX Information Element - TCP control bits observed for the packets of this Flow. This information is encoded as a bit field; for each TCP control bit, there is a bit in this set. The bit is set to 1 if any observed packet of this Flow has the corresponding TCP control bit set to 1. The bit is cleared to 0 otherwise. See [RFC793][RFC3168] also. Reverse direction.
+  - name: tcpWindowSize
+    type: integer (nullable = true)
+    description: IANA IPFIX Information Element - The window field in the TCP header. If the TCP window scale is supported, then TCP window scale must be known to fully interpret the value of this information.
+  - name: timestamp
+    type: long (nullable = true)
+    description: UNIX Epoch timestamp in milliseconds equivalent to the `biFlowEndMilliseconds` attribute.
+  - name: vlanId
+    type: integer (nullable = true)
+    description: IANA IPFIX Information Element - Virtual LAN identifier associated with ingress interface.
